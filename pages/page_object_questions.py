@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from locators.locators_for_price import LоcatorsDropDownList
 
 
+
 # Клас страницы с вопросами
 class QuestionsPage:
     def __init__(self, driver):
@@ -20,8 +21,7 @@ class QuestionsPage:
         self.driver.execute_script("arguments[0].scrollIntoView();", element_1)
 
     def waiting_for_the_main_page_to_load(self):
-        WebDriverWait(self.driver, 12).until(
-            expected_conditions.visibility_of_element_located((LоcatorsDropDownList.WAITING_FOR_THE_MAIN_PAGE)))
+        WebDriverWait(self.driver, 12).until(expected_conditions.visibility_of_element_located((LоcatorsDropDownList.WAITING_FOR_THE_MAIN_PAGE)))
 
     def click_price(self):
         self.driver.find_element(*LоcatorsDropDownList.PRICE).click()
@@ -62,8 +62,7 @@ class QuestionsPage:
         self.driver.find_element(*LоcatorsDropDownList.RENTAL_TIME).click()
 
     def waiting_for_the_text_answer_3(self):
-        WebDriverWait(self.driver, 6).until(
-            expected_conditions.visibility_of_element_located((LоcatorsDropDownList.RENTAL_TIME_ANSWER)))
+        WebDriverWait(self.driver, 6).until(expected_conditions.visibility_of_element_located((LоcatorsDropDownList.RENTAL_TIME_ANSWER)))
 
     def answer_for_rental_time(self):
         return self.driver.find_element(*LоcatorsDropDownList.RENTAL_TIME_ANSWER).text
