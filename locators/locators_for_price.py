@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 
+
 class LоcatorsDropDownList:
     PRICE = By.XPATH, "//div[text() = 'Сколько это стоит? И как оплатить?']"
     PRICE_ANSWER = By.XPATH, './/p[text()="Сутки — 400 рублей. Оплата курьеру — наличными или картой."]'
@@ -20,4 +21,4 @@ class LоcatorsDropDownList:
     WAITING_FOR_THE_MAIN_PAGE = By.XPATH, './/img[@alt="Scooter blueprint"]'
     CLICK_BUTTON_COOKIES = By.XPATH, "//button[text() = 'да все привыкли']"
 
-
+    LOGO_YANDEX = By.XPATH, ".//img[@alt='Yandex']"

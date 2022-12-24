@@ -1,5 +1,4 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -153,3 +152,17 @@ class QuestionsPage:
 
     def waiting_i_live(self):
         WebDriverWait(self.driver, 6).until(expected_conditions.visibility_of_element_located((LоcatorsDropDownList.I_LIVE)))
+
+    def click_logo_yandex(self):
+        self.driver.find_element(*LоcatorsDropDownList.LOGO_YANDEX).click()
+
+    def switching_to_a_tab(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
+
+    def waiting_url_yandex_page(self):
+        WebDriverWait(self.driver, 15).until(EC.url_to_be('https://dzen.ru/?yredirect=true'))
+
+    def get_current_url_yandex_page(self):
+        url = self.driver.current_url
+        return url
+

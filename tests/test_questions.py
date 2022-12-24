@@ -1,12 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-
+import allure
 from pages.page_object_questions import QuestionsPage
 
-
 class TestQuestion:
+    @allure.title('Проверяем вопрос о стоимости')
     def test_price(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -25,6 +21,7 @@ class TestQuestion:
 
         assert answer_from_price == answer_1
 
+    @allure.title('Проверяем вопрос о заказе нескольких самокатов')
     def test_several_scooters(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -43,6 +40,7 @@ class TestQuestion:
 
         assert answer_from_several_scooters == answer_2
 
+    @allure.title('Проверяем вопрос о расчете времени аренды')
     def test_rental_time(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -61,6 +59,7 @@ class TestQuestion:
 
         assert answer_from_rental_time == answer_3
 
+    @allure.title('Проверяем вопрос о возможности заказа сегодня')
     def test_order_today(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -79,6 +78,7 @@ class TestQuestion:
 
         assert answer_from_order_today == answer_4
 
+    @allure.title('Проверяем вопрос о продлении заказа')
     def test_extend_the_order(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -97,6 +97,7 @@ class TestQuestion:
 
         assert answer_from_extend_the_order == answer_5
 
+    @allure.title('Проверяем вопрос о зарядке')
     def test_charging(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -115,6 +116,7 @@ class TestQuestion:
 
         assert answer_from_charging == answer_6
 
+    @allure.title('Проверяем вопрос об отмене заказа')
     def test_cancel_the_order(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -133,6 +135,7 @@ class TestQuestion:
 
         assert answer_from_cancel_the_order == answer_7
 
+    @allure.title('Проверяем вопрос о возможности доставки заказа за МКАД')
     def test_i_live(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -150,3 +153,21 @@ class TestQuestion:
         answer_from_i_live = questions_page_8.answer_for_i_live()
 
         assert answer_from_i_live == answer_8
+
+    @allure.title('Проверяем клиг по логотипу Яндекс')
+    def test_click_logo_yandex(self, driver):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+
+        questions_page = QuestionsPage(driver)
+        questions_page.waiting_for_the_main_page_to_load()
+        questions_page.click_logo_yandex()
+        questions_page.switching_to_a_tab()
+        questions_page.waiting_url_yandex_page()
+        url_test = questions_page.get_current_url_yandex_page()
+        url = 'https://dzen.ru/?yredirect=true'
+
+        assert url_test == url
+
+
+
+

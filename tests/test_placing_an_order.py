@@ -1,7 +1,9 @@
+import allure
 from pages.page_object_placing_an_order import WhoIsTheScooterFor
 
 
 class TestPlacingAnOrder:
+    @allure.title('Проверяем заполнение заказа с данными 1')
     def test_making_an_order_one(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -27,6 +29,7 @@ class TestPlacingAnOrder:
         text = "Посмотреть статус"
         assert button_text == text
 
+    @allure.title('Проверяем заполнение заказа с данными 2')
     def test_making_an_order_two(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -54,6 +57,7 @@ class TestPlacingAnOrder:
         text = "Посмотреть статус"
         assert button_text == text
 
+    @allure.title('Проверяем клик по логотипу Самокат')
     def test_click_logo_scooter(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
