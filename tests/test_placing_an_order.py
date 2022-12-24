@@ -1,7 +1,7 @@
-from pages.page_object_who_is_the_scooter_for import WhoIsTheScooterFor
+from pages.page_object_placing_an_order import WhoIsTheScooterFor
 
 
-class TestWhoIsTheScooterFor:
+class TestPlacingAnOrder:
     def test_making_an_order_one(self, driver):
         driver.get('https://qa-scooter.praktikum-services.ru/')
 
@@ -39,7 +39,9 @@ class TestWhoIsTheScooterFor:
         phone = "+7777777555"
 
         who_is_the_page.waiting_for_the_main_page_to_load()
-        who_is_the_page.click_button_top_order()
+        who_is_the_page.scroll_to_button_bottom_order()
+        who_is_the_page.waiting_button_bottom_order()
+        who_is_the_page.click_button_bottom_order()
         who_is_the_page.click_button_cookies()
         who_is_the_page.fill_field_who_two(name, last_name, address, metro_station, phone)
 
@@ -52,3 +54,13 @@ class TestWhoIsTheScooterFor:
         text = "Посмотреть статус"
         assert button_text == text
 
+    def test_click_logo_scooter(self, driver):
+        driver.get('https://qa-scooter.praktikum-services.ru/')
+
+        who_is_the_page = WhoIsTheScooterFor(driver)
+        who_is_the_page.waiting_for_the_main_page_to_load()
+        who_is_the_page.click_button_top_order()
+        who_is_the_page.click_logo_scooter()
+        who_is_the_page.waiting_for_the_main_page_to_load()
+
+        assert who_is_the_page.title_scooter_for_a_couple_days().is_displayed()

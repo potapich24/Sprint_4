@@ -27,3 +27,6 @@ class LocatorsWhoIsTheScooterFor:
     BUTTON_YES = By.XPATH, ".//button[text()='Да']"
     TITLE_THE_ORDER_HAS_BEEN_PLACED = By.XPATH, ".//div[text()='Заказ оформлен']"
     BUTTON_VIEW_STATUS = By.XPATH, ".//button[text()='Посмотреть статус']"
+
+    LOGO_SCOOTER = By.XPATH, ".//img[@alt='Scooter']"
+    TITLE_SCOOTER_FOR_A_COUPLE_DAYS = By.XPATH, ".//div[text()='Привезём его прямо к вашей двери,']"

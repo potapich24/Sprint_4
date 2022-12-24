@@ -1,10 +1,8 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from locators.locators_for_price import LоcatorsDropDownList
-from locators.locators_who_is_the_scooter_for import LocatorsWhoIsTheScooterFor
+from locators.locators_placing_an_order import LocatorsWhoIsTheScooterFor
 
 
 class WhoIsTheScooterFor:
@@ -17,6 +15,17 @@ class WhoIsTheScooterFor:
 
     def click_button_top_order(self):
         self.driver.find_element(*LocatorsWhoIsTheScooterFor.BUTTON_TOP_ORDER).click()
+
+    def click_button_bottom_order(self):
+        self.driver.find_element(*LocatorsWhoIsTheScooterFor.BUTTON_BOTTOM_ORDER).click()
+
+    def scroll_to_button_bottom_order(self):
+        element = self.driver.find_element(*LocatorsWhoIsTheScooterFor.BUTTON_BOTTOM_ORDER)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
+
+    def waiting_button_bottom_order(self):
+        WebDriverWait(self.driver, 12).until(expected_conditions.visibility_of_element_located(
+            (LocatorsWhoIsTheScooterFor.BUTTON_BOTTOM_ORDER)))
 
     def waiting_title_who_is_the_scooter_for(self):
         WebDriverWait(self.driver, 12).until(expected_conditions.visibility_of_element_located(
@@ -122,3 +131,10 @@ class WhoIsTheScooterFor:
         self.fill_comment_field(comment)
         self.click_button_order()
         self.click_button_yes()
+
+    def click_logo_scooter(self):
+        self.driver.find_element(*LocatorsWhoIsTheScooterFor.LOGO_SCOOTER).click()
+
+    def title_scooter_for_a_couple_days(self):
+        title = self.driver.find_element(*LocatorsWhoIsTheScooterFor.TITLE_SCOOTER_FOR_A_COUPLE_DAYS)
+        return title
